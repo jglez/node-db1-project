@@ -9,8 +9,17 @@ SELECT phone FROM suppliers
 WHERE supplierid = 11;
 
 -- List first 10 orders placed, sorted descending by the order date
+SELECT * FROM orders -- I want all the attributes
+ORDER BY orderdate   -- I want the first orders at the top
+LIMIT 10;            -- I only want 10 of them
+
+SELECT * FROM orders
+ORDER BY orderdate desc -- I want to order by oldest orders placed
+LIMIT 10;               -- Only the last 10
 
 -- Find all customers that live in London, Madrid, or Brazil
+SELECT * FROM customers
+WHERE (city = 'London') or (city = 'Madrid') or (country = 'Brazil')
 
 -- Add a customer record for "The Shire", the contact name is "Bilbo Baggins" the address is -"1 Hobbit-Hole" in "Bag End", postal code "111" and the country is "Middle Earth"
 
