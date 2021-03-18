@@ -8,19 +8,28 @@ const Account = require('./accounts-model.js')
 const router = express.Router()
 
 /***** ACCOUNTS ENDPOINTS *****/
-
+// Get all accounts
 router.get('/', async (req, res, next) => {
   Account.getAll()
-    .then(account => {
-      res.status(200).json(account)
+    .then(accounts => {
+      res.status(200).json(accounts)
     })
     .catch(err => {
       res.status(500).json(err)
     })
 })
 
+// Get by ID
 router.get('/:id', (req, res, next) => {
-  // DO YOUR MAGIC
+  const id = req.params.id
+
+  Account.getById(id)
+    .then(account => {
+      res.status(200).json(account)
+    })
+    .catch(err => {
+      res.status(500).json(err)
+    })
 })
 
 router.post('/', (req, res, next) => {

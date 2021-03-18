@@ -2,12 +2,14 @@
 const db = require('../../data/db-config.js')
 
 const getAll = () => {
-  // DO YOUR MAGIC
   return db.raw(`SELECT * FROM accounts`)
 }
 
 const getById = id => {
-  // DO YOUR MAGIC
+  return db.raw(`
+    SELECT * FROM accounts
+    WHERE id = ${id}
+  `)
 }
 
 const create = async account => {
