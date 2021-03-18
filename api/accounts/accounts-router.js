@@ -33,7 +33,9 @@ router.get('/:id', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-  // DO YOUR MAGIC
+  const newAccount = req.body
+
+  console.log(newAccount)
 })
 
 router.put('/:id', (req, res, next) => {

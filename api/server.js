@@ -4,14 +4,21 @@ const express = require("express");
 // Import our Accounts Router
 const accountsRouter = require('./accounts/accounts-router.js')
 
+// Import Morgan Network Logger
+const morgan = require('morgan')
+
 // Instantiation of Express application
 const server = express();
 
 // Enable Express to parse JSON bodies
 server.use(express.json());
+// Instantiate Morgan
+server.use(morgan('dev'))
 
 // Funnel requests to this URL into the Accounts Router
 server.use('/api/users', accountsRouter)
+
+
 
 // Expose our Server to the outer world
 module.exports = server;
