@@ -27,10 +27,15 @@ const getById = id => {
 }
 
 const create = async account => {
-  return db.raw(`
-    INSERT INTO accounts (name, budget)
-    values ('foo', 'bar')
-  `)
+  const [id] = await db('accounts').insert(account)
+  // Model functions can use each other
+  // We have to do this because we can only return id ^
+  return getById(id)
+
+  // return db.raw(`
+  //   INSERT INTO accounts (name, budget)
+  //   values ('foo', 'bar')
+  // `)
 }
 
 const updateById = async (id, account) => {
