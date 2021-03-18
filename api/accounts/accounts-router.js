@@ -1,7 +1,22 @@
-const router = require('express').Router()
+// Import Express
+const express = require('express')
+
+// Import Accounts Model
+const Account = require('./accounts-model.js')
+
+// Instantiate our Router
+const router = express.Router()
+
+/***** ACCOUNTS ENDPOINTS *****/
 
 router.get('/', async (req, res, next) => {
-  // DO YOUR MAGIC
+  Account.getAll()
+    .then(account => {
+      res.status(200).json(account)
+    })
+    .catch(err => {
+      res.status(500).json(err)
+    })
 })
 
 router.get('/:id', (req, res, next) => {
@@ -28,4 +43,5 @@ router.use((err, req, res, next) => { // eslint-disable-line
   })
 })
 
+// Expose our Accounts Router to the outer world
 module.exports = router;

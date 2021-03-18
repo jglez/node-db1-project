@@ -1,5 +1,9 @@
+// representation of the database
+const db = require('../../data/db-config.js')
+
 const getAll = () => {
   // DO YOUR MAGIC
+  return db.raw(`SELECT * FROM accounts`)
 }
 
 const getById = id => {
