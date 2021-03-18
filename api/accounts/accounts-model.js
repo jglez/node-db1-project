@@ -12,7 +12,8 @@ const getAll = () => {
 
 const getById = id => {
   // Proper Knex syntax
-  return db('accounts').where({ id })
+  return db('accounts').where({ id }).first()
+  // .first() makes it so we return just the obj, not an array
 
   // return db.raw(`
   //   SELECT * FROM accounts ---> this is better raw SQL
@@ -26,7 +27,10 @@ const getById = id => {
 }
 
 const create = async account => {
-
+  return db.raw(`
+    INSERT INTO accounts (name, budget)
+    values ('foo', 'bar')
+  `)
 }
 
 const updateById = async (id, account) => {

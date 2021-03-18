@@ -35,6 +35,11 @@ router.get('/:id', (req, res, next) => {
 router.post('/', (req, res, next) => {
   const newAccount = req.body
 
+  Account.create()
+    .then(account => {
+      res.status(200).json(account)
+    })
+
   console.log(newAccount)
 })
 
